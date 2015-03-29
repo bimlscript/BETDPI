@@ -4,10 +4,10 @@
         <Package Name="Package1">
             <Tasks>
 				<# foreach (var table in RootNode.Tables) { #>
-                <Dataflow Name="DFT Load <#=table.SsisSafeScopedName #>">
+                <Dataflow Name="DFT Load <#=table.SsisSafeScopedName #>" DelayValidation="true">
                     <Transformations>
                         <FlatFileSource Name="Extract" ConnectionName="<#=table.Name#>" />
-                        <OleDbDestination Name="Load" ConnectionName="Target">
+                        <OleDbDestination Name="Load" ConnectionName="Target" ValidateExternalMetadata="false">
                             <TableOutput TableName="<#=table.ScopedName#>" />
                         </OleDbDestination>
                     </Transformations>
