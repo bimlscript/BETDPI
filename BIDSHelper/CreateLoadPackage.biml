@@ -1,13 +1,13 @@
 ﻿<#@ template tier="2" #>
 <Biml xmlns="http://schemas.varigence.com/biml.xsd">
-    <Packages>
-        <Package Name="Package1">
+	<Packages>
+        <Package Name="TabularDataPackageImporter">
             <Tasks>
 				<# foreach (var table in RootNode.Tables) { #>
-                <Dataflow Name="Load Into <#=table.SsisSafeScopedName #>">
+                <Dataflow Name="DFT Load <#=table.SsisSafeScopedName #>" DelayValidation="true">
                     <Transformations>
-                        <FlatFileSource Name="Extract" ConnectionName="<#=table.Name#>" />
-                        <OleDbDestination Name="Load" ConnectionName="Target">
+                        <FlatFileSource Name="FF_SRC SourceFile" ConnectionName="<#=table.Name#>" />
+                        <OleDbDestination Name="OLE_DST TargetTable" ConnectionName="Target" ValidateExternalMetadata="false">
                             <TableOutput TableName="<#=table.ScopedName#>" />
                         </OleDbDestination>
                     </Transformations>

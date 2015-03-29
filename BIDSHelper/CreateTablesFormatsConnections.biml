@@ -1,5 +1,5 @@
 ﻿<#
-var json = System.IO.File.ReadAllText(@"C:\github\bimlscript\betdpi\SampleData\datapackage.json");
+var json = System.IO.File.ReadAllText(@"..\SampleData\datapackage.json");
 var dataPackage = DataPackage.Load(json);
 #>
 <Biml xmlns="http://schemas.varigence.com/biml.xsd">
