@@ -1,0 +1,42 @@
+﻿<#
+var json = System.IO.File.ReadAllText(@"C:\MistProjects2\TabularDataPackageImporter\SampleData\datapackage.json");
+var dataPackage = DataPackage.Load(json);
+#>
+<Biml xmlns="http://schemas.varigence.com/biml.xsd">
+    <Tables>
+		<# foreach (var resource in dataPackage.Resources) { #>
+		<# var tableName = System.IO.Path.GetFileNameWithoutExtension(resource.Path); #>
+        <Table Name="<#=tableName#>" SchemaName="TabularDataPackageTarget.[default]">
+            <Columns>
+				<# foreach (var field in resource.Schema.Fields) { #>
+                <Column Name="<#=field.Name#>" DataType="<#=field.DbType #>" Length="<#=field.Length #>" Precision="<#=field.Precision#>" Scale="<#=field.Scale#>" />
+				<# } #>
+            </Columns>
+        </Table>
+		<# } #>
+    </Tables>
+	<FileFormats>
+		<# foreach (var resource in dataPackage.Resources) { #>
+		<# var fileFormatName = System.IO.Path.GetFileNameWithoutExtension(resource.Path); #>
+		<FlatFileFormat Name="<#=fileFormatName #>" RowDelimiter="CRLF" ColumnNamesInFirstDataRow="true" FlatFileType="Delimited" IsUnicode="false">
+            <Columns>
+				<# var fieldCount = resource.Schema.Fields.Count; #>
+				<# var index = 1; #>
+				<# foreach (var field in resource.Schema.Fields) { #>
+                <Column Name="<#=field.Name#>" DataType="<#=field.DbType #>" Length="<#=field.Length #>" Precision="<#=field.Precision#>" Scale="<#=field.Scale#>" ColumnType="Delimited" Delimiter="<#= index == fieldCount ? "CRLF" : "Comma" #>" />
+				<# index++; } #>
+            </Columns>
+        </FlatFileFormat>
+		<# } #>
+    </FileFormats>
+	<Connections>
+		<# foreach (var resource in dataPackage.Resources) { #>
+		<# var fileFormatName = System.IO.Path.GetFileNameWithoutExtension(resource.Path); #>
+		<FlatFileConnection Name="<#=fileFormatName #>" FileFormat="<#=fileFormatName#>" FilePath="C:\MistProjects2\TabularDataPackageImporter\SampleData\<#=resource.Path #>" />
+		<# } #>
+    </Connections>
+</Biml>
+
+<#@ code file="..\Code\DataPackageUtility.cs" #>
+<#@ assembly name="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" #>
+<#@ assembly name="System.Runtime.Serialization, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" #>

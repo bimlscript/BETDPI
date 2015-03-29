@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <IsPackageEditorCompactDisplayModeEnabled>False</IsPackageEditorCompactDisplayModeEnabled>
+    <IsTemplateAutoUpdatePreviewEnabled>True</IsTemplateAutoUpdatePreviewEnabled>
+    <IsTemplateCheckBimlSyntaxEnabled>True</IsTemplateCheckBimlSyntaxEnabled>
+    <IsTemplateAutoFormatXmlEnabled>True</IsTemplateAutoFormatXmlEnabled>
+    <AddedXmlFilesPath>addedBiml</AddedXmlFilesPath>
+    <CompilationOutputPath>output</CompilationOutputPath>
+    <DocumentationOutputPath>documentation</DocumentationOutputPath>
+    <DocumentationTemplatePath />
+    <IsWarnAsErrorEnabled>False</IsWarnAsErrorEnabled>
+    <WarningLevel>4</WarningLevel>
+    <IsCleanOutputFolderEnabled>False</IsCleanOutputFolderEnabled>
+    <IsCleanDocumentationFolderEnabled>False</IsCleanDocumentationFolderEnabled>
+    <SqlVersion>SqlServer2012</SqlVersion>
+    <SsasVersion>Ssas2012</SsasVersion>
+    <SsisVersion>Ssis2014</SsisVersion>
+    <UseProjectDeploymentModel>False</UseProjectDeploymentModel>
+    <ExtraCommandLineOptions />
+    <EmitDocumentationAnnotations>True</EmitDocumentationAnnotations>
+    <EmitCodeCommentAnnotations>False</EmitCodeCommentAnnotations>
+    <EmitTagAnnotations>False</EmitTagAnnotations>
+    <EmitEmittableAssets>True</EmitEmittableAssets>
+    <EmitIncludeAssets>True</EmitIncludeAssets>
+    <DefaultConnectionName />
+    <LoweringTemplateConfigurationPath />
+    <SelectedConfigurationFilePath />
+    <SelectedFrameworkFilePath />
+    <MistVersion>4.0.50321.0</MistVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <RootFolder Include=" ">
+      <RootFolderId>0</RootFolderId>
+    </RootFolder>
+  </ItemGroup>
+  <ItemGroup>
+    <Live Include="addedBiml\Connections\Target.biml">
+      <RootFolderId>0</RootFolderId>
+    </Live>
+    <Live Include="addedBiml\Databases\TabularDataPackageTarget.biml">
+      <RootFolderId>0</RootFolderId>
+    </Live>
+    <Live Include="addedBiml\Packages\Package1.biml">
+      <RootFolderId>0</RootFolderId>
+    </Live>
+    <Live Include="addedBiml\Tables\Table1.biml">
+      <RootFolderId>0</RootFolderId>
+    </Live>
+    <None Include="addedBiml\Code\DataPackageUtility.cs">
+      <RootFolderId>0</RootFolderId>
+    </None>
+    <None Include="TabularDataPackageImporter.bimlproj">
+      <RootFolderId>0</RootFolderId>
+    </None>
+    <Reference Include="addedBiml\BimlScripts\Test.biml">
+      <RootFolderId>0</RootFolderId>
+    </Reference>
+  </ItemGroup>
+</Project>

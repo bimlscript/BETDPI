@@ -1,0 +1,8 @@
+﻿<Biml xmlns="http://schemas.varigence.com/biml.xsd">
+    <Connections>
+        <Connection Name="Target" ConnectionString="Provider=SQLNCLI11;Data Source=localhost;Integrated Security=SSPI;Initial Catalog=TabularDataPackageTarget" />
+    </Connections>
+    <Databases>
+        <Database Name="TabularDataPackageTarget" ConnectionName="Target" />
+    </Databases>
+</Biml>

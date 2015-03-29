@@ -1,0 +1,16 @@
+Package1	Package1.DataflowTask1	5	5	408	405
+Package1	Package1.DataflowTask1.FlatFileSource1	86	14.38	300	100
+Package1	Package1.DataflowTask1.OLEDBDestination2	127	134.38	300	100
+Package1	Package1.DataflowTask1.Extract	48	5	300	100
+Package1	Package1.DataflowTask1.Load	48	155	300	100
+Package1	Package1.Load Into TabularDataPackageTarget__default__data	450	5	408	405
+Package1	Package1.Load Into TabularDataPackageTarget__default__data.Extract	48	5	300	100
+Package1	Package1.Load Into TabularDataPackageTarget__default__data.Load	48	155	300	100
+**********Compact Node Bounds
+**********Source Anchors
+Package1	Package1.Load Into TabularDataPackageTarget__default__data	Package1.Load Into TabularDataPackageTarget__default__data.Output
+Package1	Package1.Load Into TabularDataPackageTarget__default__data.Extract	Package1.Load Into TabularDataPackageTarget__default__data.Extract.Output
+Package1	Package1.Load Into TabularDataPackageTarget__default__data.Extract	Package1.Load Into TabularDataPackageTarget__default__data.Extract.Error
+Package1	Package1.Load Into TabularDataPackageTarget__default__data.Load	Package1.Load Into TabularDataPackageTarget__default__data.Load.Error
+**********Sink Anchors
+Package1	Package1.Load Into TabularDataPackageTarget__default__data.Load	Package1.Load Into TabularDataPackageTarget__default__data.Extract.Output
