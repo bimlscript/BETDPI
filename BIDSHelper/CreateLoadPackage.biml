@@ -1,10 +1,10 @@
 ﻿<#@ template tier="2" #>
 <Biml xmlns="http://schemas.varigence.com/biml.xsd">
-    <Packages>
+	<Packages>
         <Package Name="Package1">
             <Tasks>
 				<# foreach (var table in RootNode.Tables) { #>
-                <Dataflow Name="Load Into <#=table.SsisSafeScopedName #>">
+                <Dataflow Name="DFT Load <#=table.SsisSafeScopedName #>">
                     <Transformations>
                         <FlatFileSource Name="Extract" ConnectionName="<#=table.Name#>" />
                         <OleDbDestination Name="Load" ConnectionName="Target">
