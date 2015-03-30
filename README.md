@@ -14,5 +14,5 @@ BETDPI is an attempt to use [BIML](http://bimlscript.com/) to generate SSIS pack
 Scott Currie recorded a screencast as he began work on BETDPI
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=RxoTAoIbCyM
 " target="_blank"><img src="http://img.youtube.com/vi/RxoTAoIbCyM/0.jpg" 
-alt="Scot Currie shows how he built BETDPI" width="480" height="360" border="10" /></a>
+alt="Scott Currie shows how he built BETDPI" width="480" height="360" border="10" /></a>
 
