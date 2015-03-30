@@ -21,16 +21,28 @@
       <FullPath>DataPackageUtility.cs</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>CreateLoadPackage.biml</Name>
-      <FullPath>CreateLoadPackage.biml</FullPath>
+      <Name>Export_Environment.biml</Name>
+      <FullPath>Export_Environment.biml</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>CreateTablesFormatsConnections.biml</Name>
-      <FullPath>CreateTablesFormatsConnections.biml</FullPath>
+      <Name>Export_Package.biml</Name>
+      <FullPath>Export_Package.biml</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>TargetConnection.biml</Name>
-      <FullPath>TargetConnection.biml</FullPath>
+      <Name>Export_TablesFormatsConnections.biml</Name>
+      <FullPath>Export_TablesFormatsConnections.biml</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Import_Environment.biml</Name>
+      <FullPath>Import_Environment.biml</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Import_Package.biml</Name>
+      <FullPath>Import_Package.biml</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Import_TablesFormatsConnections.biml</Name>
+      <FullPath>Import_TablesFormatsConnections.biml</FullPath>
     </ProjectItem>
   </Miscellaneous>
   <Configurations>

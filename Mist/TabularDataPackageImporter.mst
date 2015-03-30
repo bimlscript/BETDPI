@@ -35,25 +35,28 @@
     </RootFolder>
   </ItemGroup>
   <ItemGroup>
-    <Live Include="addedBiml\Connections\Target.biml">
+    <Live Include="addedBiml\Export_Environment.biml">
       <RootFolderId>0</RootFolderId>
     </Live>
-    <Live Include="addedBiml\Databases\TabularDataPackageTarget.biml">
+    <Live Include="addedBiml\Import_Environment.biml">
       <RootFolderId>0</RootFolderId>
     </Live>
-    <Live Include="addedBiml\Packages\Package1.biml">
-      <RootFolderId>0</RootFolderId>
-    </Live>
-    <Live Include="addedBiml\Tables\Table1.biml">
-      <RootFolderId>0</RootFolderId>
-    </Live>
-    <None Include="addedBiml\Code\DataPackageUtility.cs">
+    <None Include="addedBiml\DataPackageUtility.cs">
       <RootFolderId>0</RootFolderId>
     </None>
     <None Include="TabularDataPackageImporter.bimlproj">
       <RootFolderId>0</RootFolderId>
     </None>
-    <Reference Include="addedBiml\BimlScripts\Test.biml">
+    <Reference Include="addedBiml\Export_Package.biml">
+      <RootFolderId>0</RootFolderId>
+    </Reference>
+    <Reference Include="addedBiml\Export_TablesFormatsConnections.biml">
+      <RootFolderId>0</RootFolderId>
+    </Reference>
+    <Reference Include="addedBiml\Import_Package.biml">
+      <RootFolderId>0</RootFolderId>
+    </Reference>
+    <Reference Include="addedBiml\Import_TablesFormatsConnections.biml">
       <RootFolderId>0</RootFolderId>
     </Reference>
   </ItemGroup>

@@ -1,5 +1,0 @@
-﻿<Biml xmlns="http://schemas.varigence.com/biml.xsd">
-    <Databases>
-        <Database Name="TabularDataPackageTarget" ConnectionName="Target" />
-    </Databases>
-</Biml>

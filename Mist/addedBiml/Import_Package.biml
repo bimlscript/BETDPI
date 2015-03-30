@@ -1,4 +1,4 @@
-﻿<#@ template tier="2" #>
+﻿<#@ template tier="300" #>
 <Biml xmlns="http://schemas.varigence.com/biml.xsd">
     <Packages>
         <Package Name="TabularDataPackageImporter">

@@ -1,0 +1,11 @@
+﻿<Biml xmlns="http://schemas.varigence.com/biml.xsd">
+    <Connections>
+        <Connection Name="Source" ConnectionString="Provider=SQLNCLI11;Data Source=localhost;Integrated Security=SSPI;Initial Catalog=AdventureWorks" />
+    </Connections>
+	<Databases>
+        <Database Name="AdventureWorks" ConnectionName="Source" />
+    </Databases>
+	<Annotations>
+		<Annotation Tag="TabularDataPackage.Export.TargetFolderPath">C:\github\bimlscript\BETDPI\SampleData</Annotation>
+    </Annotations>
+</Biml>
