@@ -1,0 +1,72 @@
+﻿<#
+var sourceConnection = RootNode.DbConnections["Source"];
+var importResults = sourceConnection.GetDatabaseSchema(ImportOptions.ExcludeForeignKey | ImportOptions.ExcludePrimaryKey | ImportOptions.ExcludeViews);
+if (importResults.ImportErrors.Any())
+{
+	throw new Exception("There were errors importing from the source connection");
+}
+#>
+
+<Biml xmlns="http://schemas.varigence.com/biml.xsd">
+	<FileFormats>
+		<# foreach (var table in importResults.TableNodes) { #>
+			<# var eligibleColumns = table.Columns.Where(i => i.DataType != DbType.Object).ToList(); #>
+			<# table.ObjectTag["EligibleColumns"] = eligibleColumns; #>
+			<# if (eligibleColumns.Count > 0) { #>
+			<FlatFileFormat Name="<#=table.SchemaQualifiedName#>" RowDelimiter="CRLF" ColumnNamesInFirstDataRow="true" FlatFileType="Delimited" IsUnicode="false">
+	            <Columns>
+
+					<# var columnCount = eligibleColumns.Count; #>
+					<# var index = 1; #>
+					<# foreach (var column in eligibleColumns) { #>
+	                <Column Name="<#=column.Name#>" DataType="<#=column.DataType #>" Length="<#=column.Length #>" Precision="<#=column.Precision#>" Scale="<#=column.Scale#>" ColumnType="Delimited" Delimiter="<#= index == columnCount ? "CRLF" : "Comma" #>" />
+					<# index++; } #>
+	            </Columns>
+	        </FlatFileFormat>
+			<# } #>
+		<# } #>
+    </FileFormats>
+	<Connections>
+		<# foreach (var table in importResults.TableNodes) { #>
+		<FlatFileConnection Name="<#=table.SchemaQualifiedName#>" FileFormat="<#=table.SchemaQualifiedName#>" FilePath="<#=Path.Combine(RootNode.GetTag("TabularDataPackage.Export.TargetFolderPath"), table.SchemaQualifiedName)#>.csv" />
+		<# } #>
+    </Connections>
+</Biml>
+
+<#
+var dataPackage = new DataPackage();
+dataPackage.Name = "MyPackage";
+dataPackage.Resources = new List<DataPackageResource>();
+
+foreach (var table in importResults.TableNodes)
+{
+	var eligibleColumns = table.ObjectTag["EligibleColumns"] as List<AstTableColumnBaseNode>;
+	if (eligibleColumns != null && eligibleColumns.Count > 0)
+	{
+		var resource = new DataPackageResource();
+		resource.Path = table.SchemaQualifiedName + ".csv";
+		resource.Schema = new DataPackageResourceSchema();
+		resource.Schema.Fields = new List<DataPackageResourceSchemaField>();
+		foreach (var column in eligibleColumns)
+		{
+			var field = new DataPackageResourceSchemaField();
+			field.Name = column.Name;
+			field.DbType = column.DataType;
+			resource.Schema.Fields.Add(field);
+	    }
+		
+		dataPackage.Resources.Add(resource);
+	}
+}
+
+dataPackage.Store(Path.Combine(RootNode.GetTag("TabularDataPackage.Export.TargetFolderPath"), "datapackage_export.json"));
+#>
+
+<#@ template tier="200" #>
+<#@ code file="DataPackageUtility.cs" #>
+<#@ assembly name="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" #>
+<#@ assembly name="System.Runtime.Serialization, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="Varigence.Biml.CoreLowerer.SchemaManagement" #>

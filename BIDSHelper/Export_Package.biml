@@ -1,0 +1,19 @@
+﻿<#@ template tier="300" #>
+<Biml xmlns="http://schemas.varigence.com/biml.xsd">
+    <Packages>
+        <Package Name="TabularDataPackageExporter">
+            <Tasks>
+				<# foreach (var flatFileFormat in RootNode.FlatFileFormats) { #>
+                <Dataflow Name=" DFT Load <#=flatFileFormat.SsisSafeScopedName #>" DelayValidation="true">
+                    <Transformations>
+			            <OleDbSource Name="OLE_SRC SourceTable" ConnectionName="Source" ValidateExternalMetadata="false">
+							<ExternalTableInput Table="<#=flatFileFormat.Name#>" />
+                        </OleDbSource>
+                        <FlatFileDestination Name="FF_DST SourceFile" ConnectionName="<#=flatFileFormat.ScopedName#>" ValidateExternalMetadata="false" Overwrite="true" />
+                    </Transformations>
+                </Dataflow>
+				<# } #>
+            </Tasks>
+        </Package>
+    </Packages>
+</Biml>
